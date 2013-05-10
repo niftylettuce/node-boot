@@ -1,29 +1,29 @@
 var express = require('express')
-  , flash = require('connect-flash')  
+  , flash = require('connect-flash')
   , passport = require('passport')
-  , logger = require('winston')  
+  , logger = require('winston')
   , RedisStore = require('connect-redis')(express)
   , cluster = require('cluster')
   , os = require('os')
   , config = require('./config')
   , routes = require('./routes')
   , db = require('./modules/db')
-  , connect = require('connect') 
+  , connect = require('connect')
 ;
 
 var app = module.exports = express()
   , server = require('http').createServer(app)
-  , socketio = require('socket.io') 
-  , sockets = require('./sockets')  
+  , socketio = require('socket.io')
+  , sockets = require('./sockets')
   , sessionStore // initialized dynamically depending on config
   , SessionSockets = require('session.socket.io')
-  , sessionSockets // initialized dynamically based on sessionStore  
+  , sessionSockets // initialized dynamically based on sessionStore
   , cookieParser = express.cookieParser(config.session.secret)
 ;
 
 // Configuration
 app.configure(function() {
-  app.use(express.logger({format: config.logging.express_format}));  
+  app.use(express.logger({format: config.logging.express_format}));
   app.use(express.compress()); // use gzip compression on static assets
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -33,26 +33,26 @@ app.configure(function() {
   app.use(express.methodOverride());
   if (config.logging.winston_mongodb) {
     logger.remove(logger.transports.Console);
-    require('winston-mongodb').MongoDB; // mongo transport for winston logging
+    require('winston-mongodb').MongoDB(); // mongo transport for winston logging
     logger.add(logger.transports.MongoDB, config.logging.winston_mongodb);
-    // Consider letting Winstong log transport handle uncaught exceptions: https://github.com/flatiron/winston#handling-uncaught-exceptions-with-winston
-  }    
+    // Consider letting Winston log transport handle uncaught exceptions: https://github.com/flatiron/winston#handling-uncaught-exceptions-with-winston
+  }
   if (config.redis) {
-    logger.info('Connecting to Redis at ' 
-      + config.redis.session_opts.host + ':' 
+    logger.info('Connecting to Redis at '
+      + config.redis.session_opts.host + ':'
       + config.redis.session_opts.port);
     sessionStore = new RedisStore(config.redis.session_opts);
   } else {
     logger.warn('Redis not configured. Storing sessions in memory. See config.redis');
     sessionStore = new connect.middleware.session.MemoryStore();
-  };
-  var session_config = {     
-    store: sessionStore,     
+  }
+  var session_config = {
+    store: sessionStore,
     secret: config.session.secret
   }
-  app.use(express.session(session_config));    
+  app.use(express.session(session_config));
   app.use(passport.initialize());
-  app.use(passport.session());  
+  app.use(passport.session());
   app.use(flash()); // must go before app.router
   // express3 style dynamic helpers in middleware:
   app.use(function(req, res, next) {
@@ -63,13 +63,13 @@ app.configure(function() {
     // Give views access to the node env (e.g. development or production)
     // and default to "development" if not specified. Used for example to
     // determine whether to show minified js/css or not if in production.
-    res.locals.NODE_ENV = process.env.NODE_ENV 
+    res.locals.NODE_ENV = process.env.NODE_ENV
       ? process.env.NODE_ENV : 'development',
     res.locals.config = config
     next();
-  });   
-  app.use(app.router);  
-  app.use(express.static(__dirname + config.static_assets.dir, 
+  });
+  app.use(app.router);
+  app.use(express.static(__dirname + config.static_assets.dir,
     { maxAge: config.static_assets.max_age }));
 });
 
@@ -88,15 +88,15 @@ var startApp = function() {
   var protocol = config.app.ssl ? 'https' : 'http';
   var port = process.env.PORT || config.app.port;
   var app_url = protocol + '://' + config.app.host + ':' + port;
-  var env = process.env.NODE_ENV 
-    ? ('[' + process.env.NODE_ENV + ']') : '[development]';  
+  var env = process.env.NODE_ENV
+    ? ('[' + process.env.NODE_ENV + ']') : '[development]';
   var io;
   server.listen(port, function() {
     logger.info(config.app.title + ' listening at ' + app_url + ' ' + env);
   });
   // Initialize socket.io sockets with express3 session integration:
   io = socketio.listen(server);
-  sessionSockets = new SessionSockets(io, sessionStore, cookieParser);  
+  sessionSockets = new SessionSockets(io, sessionStore, cookieParser);
   var listeners = []; // Add listener modules to this array to start socket.io
   sockets(io, sessionSockets, []);
 }
@@ -113,10 +113,10 @@ var startCluster = function (onWorker, onDeath) {
     onWorker();
   }
 };
-  
+
 if (config.app.cluster) {
-  startCluster(startApp, function(worker) {    
-    winston.error('worker ' + worker.pid + ' died'); // A worker process died 
+  startCluster(startApp, function(worker) {
+    logger.error('worker ' + worker.pid + ' died'); // A worker process died
   });
 } else {
   startApp();

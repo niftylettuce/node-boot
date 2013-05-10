@@ -8,7 +8,7 @@ module.exports = function(app) {
     var readmeMarkdown = fs.readFileSync('./README.md', 'utf-8');
     var readmeHtml = markdown.toHTML(readmeMarkdown);
     res.render('home-page', {
-      title: config.app.title, 
+      title: config.app.title,
       contents: readmeHtml
     });
   });

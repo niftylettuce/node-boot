@@ -30,15 +30,15 @@ module.exports = function(grunt) {
   };
   var isCss = function(filename) {
     return filename.endsWith('.css');
-  };  
+  };
   var getFilename = function(path) {
     return path.split('\\').pop().split('/').pop();
   };
   var getPrefixMapFn = function(comp) {
     return function (path) {
       return gruntBowerDir + '/' + comp + '/' + path;
-    };   
-  };  
+    };
+  };
   Object.keys(bowerComps.dependencies).forEach(function(comp) {
     if (bowerComps.exportsOverride && bowerComps.exportsOverride[comp]) {
       // This Bower component was overridden to specify exact files to
@@ -47,18 +47,18 @@ module.exports = function(grunt) {
       // which ultimately affects the order the code is presented to
       // the browser. So if it's critical to have one file come after another
       // (say you want bootstrap.css to come before bootstrap-responsive.css)
-      // include them in that order in the exportsOverride field of 
+      // include them in that order in the exportsOverride field of
       // component.json.
-      Object.keys(bowerComps.exportsOverride[comp]).forEach(function(targetDir) {       
+      Object.keys(bowerComps.exportsOverride[comp]).forEach(function(targetDir) {
         var srcFiles = bowerComps.exportsOverride[comp][targetDir];
         var jsFiles = srcFiles.filter(isJavascript);
         var cssFiles = srcFiles.filter(isCss);
         var prefixMapFn = getPrefixMapFn(comp);
-        if (jsFiles && jsFiles.length > 0) { 
-          bowerJs = bowerJs.concat(jsFiles.map(getFilename).map(prefixMapFn)); 
+        if (jsFiles && jsFiles.length > 0) {
+          bowerJs = bowerJs.concat(jsFiles.map(getFilename).map(prefixMapFn));
         }
-        if (cssFiles && cssFiles.length > 0) { 
-          bowerCss = bowerCss.concat(cssFiles.map(getFilename).map(prefixMapFn)); 
+        if (cssFiles && cssFiles.length > 0) {
+          bowerCss = bowerCss.concat(cssFiles.map(getFilename).map(prefixMapFn));
         }
       });
     } else {
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
           targetDir: gruntBowerDir
         }
       }
-    },   
+    },
     jshint: {
       // define the files to lint
       files: ['Gruntfile.js'],
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
           module: true
         }
       }
-    },     
+    },
     concat: {
       options: {
         stripBanners: false,
@@ -122,8 +122,8 @@ module.exports = function(grunt) {
           customAssetsDir + '/css/*.css'
         ],
         dest: gruntBowerDir + '/<%= pkg.name %>/<%= pkg.name %>.css'
-      }            
-    },    
+      }
+    },
     min: {
       dist: {
         files: {
@@ -153,19 +153,19 @@ module.exports = function(grunt) {
           {expand: true, cwd: gruntBowerDir + '/3party/', src: ['3party.js'], dest: './public/dist-dev/js/', filter: 'isFile'},
           {expand: true, cwd: gruntBowerDir + '/3party/', src: ['3party.css'], dest: './public/dist-dev/css/', filter: 'isFile'},
           {expand: true, cwd: gruntBowerDir + '/<%= pkg.name %>/', src: ['<%= pkg.name %>.js'], dest: './public/dist-dev/js/', filter: 'isFile'},
-          {expand: true, cwd: gruntBowerDir + '/<%= pkg.name %>/', src: ['<%= pkg.name %>.css'], dest: './public/dist-dev/css/', filter: 'isFile'},          
+          {expand: true, cwd: gruntBowerDir + '/<%= pkg.name %>/', src: ['<%= pkg.name %>.css'], dest: './public/dist-dev/css/', filter: 'isFile'},
           {expand: true, cwd: customAssetsDir + '/img/', src: ['**'], dest: './public/dist-dev/img/', filter: 'isFile'},
           {expand: true, cwd: customAssetsDir + '/ico/', src: ['**'], dest: './public/dist-dev/ico/', filter: 'isFile'},
           {expand: true, cwd: customAssetsDir + '/fonts/', src: ['**'], dest: './public/dist-dev/fonts/', filter: 'isFile'}
         ]
-      }     
-    }, 
+      }
+    },
     watch: {
       files: [
         '<%= jshint.files %>', // Gruntfile.js - TODO: apply to custom assets & node scripts
         'package.json', // NPM modules
         bowerRc.json,   // Bower modules
-        'assets/**' 
+        'assets/**'
       ],
       tasks: ['dev']
     }
@@ -183,8 +183,8 @@ module.exports = function(grunt) {
   // Register the default tasks
   grunt.registerTask('default', [
     'clean',
-    'bower:install', 
-    'jshint', 
+    'bower:install',
+    'jshint',
     'concat',
     'min',
     'cssmin',
@@ -192,10 +192,10 @@ module.exports = function(grunt) {
     ]
   );
 
-  // Developer tasks (not for production): 
+  // Developer tasks (not for production):
   grunt.registerTask('dev', [
     'clean:dev',
-    'bower:install', 
+    'bower:install',
     'jshint',
     'concat',
     'copy:dev'

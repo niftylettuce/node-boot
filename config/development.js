@@ -1,4 +1,4 @@
-exports.app = app = {
+var app = exports.app = {
   title: 'node-boot',
   host: 'localhost',
   port: 8000,
@@ -34,7 +34,7 @@ exports.passport = {
   //----------------------------
   // facebook: {
   //   success_redir_url: '/auth/success',
-  //   failure_redir_url: '/auth/failure',    
+  //   failure_redir_url: '/auth/failure',
   //   callbackURL : 'http://localhost:8000/auth/facebook/callback',
   //   clientID: '',
   //   clientSecret: '',
@@ -44,24 +44,24 @@ exports.passport = {
   // },
   // twitter: {
   //   success_redir_url: '/auth/success',
-  //   failure_redir_url: '/auth/failure',        
+  //   failure_redir_url: '/auth/failure',
   //   callbackURL: 'http://localhost:8000/auth/twitter/callback',
   //   consumerKey: '',
   //   consumerSecret: '',
   //   photoUrl: function(profile) {
   //     return (profile.photos && profile.photos.length > 0) ? profile.photos[0].value : null;
-  //   }    
+  //   }
   // },
   // github: {
   //   success_redir_url: '/auth/success',
-  //   failure_redir_url: '/auth/failure',        
+  //   failure_redir_url: '/auth/failure',
   //   callbackURL: 'http://localhost:8000/auth/github/callback',
   //   clientID: '',
   //   clientSecret: '',
   //   photoUrl: function(profile) {
   //     return (profile._json && profile._json.avatar_url) ? profile._json.avatar_url : null;
-  //   }    
-  // }  
+  //   }
+  // }
 }
 
 exports.session = {

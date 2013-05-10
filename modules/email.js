@@ -19,11 +19,11 @@ module.exports = function() {
       logger.warn('email not configured; not sending message');
       callback(null, null);
       return;
-    }    
-    smtp_transport.sendMail(opts, callback);    
+    }
+    smtp_transport.sendMail(opts, callback);
   }
 
   return {
     send: send
-  }  
+  }
 }

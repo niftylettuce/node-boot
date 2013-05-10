@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-exports.app = app = {
+var app = exports.app = {
   title: 'node-boot',
   host: 'localhost', // <= Change this to reflect the domain name this site is available on.
   port: 8000, // <= process.env.PORT overrides this, for hosted environments such as Heroku. Change to 443 if hosting for SSL.
@@ -25,7 +25,7 @@ exports.logging = {
   //   username: '',
   //   password: '',
   //   safe: false // faster - don't perform 2nd request to verify log message was received/saved
-  // }  
+  // }
 }
 
 //-- Uncomment below and configure once MongoDB available:
@@ -54,7 +54,7 @@ exports.passport = {
   //----------------------------
   // facebook: {
   //   success_redir_url: '/auth/success',
-  //   failure_redir_url: '/auth/failure',        
+  //   failure_redir_url: '/auth/failure',
   //   callbackURL : 'http://localhost:8000/auth/facebook/callback',
   //   clientID: '',
   //   clientSecret: '',
@@ -64,24 +64,24 @@ exports.passport = {
   // },
   // twitter: {
   //   success_redir_url: '/auth/success',
-  //   failure_redir_url: '/auth/failure',        
+  //   failure_redir_url: '/auth/failure',
   //   callbackURL: 'http://localhost:8000/auth/twitter/callback',
   //   consumerKey: '',
   //   consumerSecret: '',
   //   photoUrl: function(profile) {
   //     return (profile.photos && profile.photos.length > 0) ? profile.photos[0].value : null;
-  //   }    
+  //   }
   // },
   // github: {
   //   success_redir_url: '/auth/success',
-  //   failure_redir_url: '/auth/failure',        
+  //   failure_redir_url: '/auth/failure',
   //   callbackURL: 'http://localhost:8000/auth/github/callback',
   //   clientID: '',
   //   clientSecret: '',
   //   photoUrl: function(profile) {
   //     return (profile._json && profile._json.avatar_url) ? profile._json.avatar_url : null;
-  //   }    
-  // }  
+  //   }
+  // }
 }
 
 exports.session = {

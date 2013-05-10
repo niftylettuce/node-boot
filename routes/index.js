@@ -3,7 +3,7 @@ var home_page = require('./home-page')
   , passport_auto = require('../modules/passport-auto')
 ;
 
-module.exports = function(app) {  
+module.exports = function(app) {
   home_page(app);
   // Auto-mount routes for various 3rd party OAuth services
   // that support Passport, e.g. Facebook, Twitter, GitHub:
