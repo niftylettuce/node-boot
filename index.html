@@ -1,1 +1,70 @@
-My Page
+<!DOCTYPE html><html><head><meta charset="utf8"><title>node-boot</title><link rel="stylesheet" href="css/bootstrap.min.css"><link rel="stylesheet" href="css/bootstrap-responsive.min.css"><link rel="stylesheet" href="css/font-awesome.min.css"><link rel="stylesheet" href="css/prettify.css"><link rel="stylesheet" href="css/docs.css"></head></html><body data-spy="scroll" data-target="#docs-navbar" data-offset="81"><div id="spacer"></div><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><div class="container"><a href="/" class="brand">node-boot</a><ul class="nav pull-right"><li><a href="https://github.com/cbumgard/node-boot"><i class="icon-github"></i> Github Repo</a></li></ul></div></div></div><div class="container"><div class="row"><div class="span2"><div id="docs-navbar" data-spy="affix"><div class="row"><div class="span2"><ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="#what-is-node-boot">What is node-boot?</a></li>
+<li><a href="#why-should-i-use-it">Why should I use it?</a></li>
+<li><a href="#how-do-i-get-started">How do I get started?</a></li>
+<li><a href="#how-can-i-get-help">How do can I get help?</a></li>
+<li><a href="#license">License</a></li>
+</ul><small class="muted">Generated with <a href="https://github.com/getprove/node-bootstrap-readme-docs">readme-docs</a></small></div></div></div></div><div class="span10"><hr><h1><a href="#node-boot" name="node-boot" id="node-boot">node-boot</a></h1>
+<p>Visit <a href="http://node-boot.herokuapp.com/"><a href="http://node-boot.herokuapp.com/">http://node-boot.herokuapp.com/</a></a> for a live demo.</p>
+<p>Demo based on <a href="http://github.com/cbumgard/node-boot-demo"><a href="http://github.com/cbumgard/node-boot-demo">http://github.com/cbumgard/node-boot-demo</a></a> fork.</p>
+<p>Visit the node-boot dev blog <a href="http://node-boot.blogspot.com/"><a href="http://node-boot.blogspot.com/">http://node-boot.blogspot.com/</a></a> to see how to build your app based on node-boot.</p>
+
+
+<hr><h2><a href="#what-is-node-boot" name="what-is-node-boot" id="what-is-node-boot">What is node-boot?</a></h2>
+<p><strong>node-boot</strong> is a starting point for developing a web application based on a proven node.js stack:</p>
+<ul>
+<li><a href="http://expressjs.com/">express</a> - server</li>
+<li><a href="http://jade-lang.com/">jade</a> - view templates</li>
+<li><a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> - html/css/js boilerplate</li>
+<li><a href="http://www.socket.io/">Socket.io</a> - websockets with legacy fallback, real-time/long-polling</li>
+<li><a href="http://www.mongodb.org/">MongoDB</a> &amp; <a href="http://mongoosejs.com/">Mongoose</a> - database/ORM</li>
+<li><a href="http://redis.io/">Redis</a> - sessions and fast key/value storage</li>
+<li><a href="http://www.nodemailer.com/">Nodemailer</a> - easy email from Gmail, SendGrid, etc</li>
+<li><a href="https://github.com/flatiron/winston">Winston</a> - multi-transport async logging</li>
+<li><a href="http://passportjs.org/">Passport.js</a> - authentication/login/signup</li>
+<li><a href="http://gruntjs.com/">Grunt.js</a> &amp; <a href="http://twitter.github.io/bower/">Bower</a> - easy task running, asset pipeline, and front-end package management</li>
+</ul>
+<hr><h2><a href="#why-should-i-use-it" name="why-should-i-use-it" id="why-should-i-use-it">Why should I use it?</a></h2>
+<p><strong>node-boot</strong> is a starting point providing a sensible, configurable, and customizable set of choices. You get a turnkey web app that provides common patterns such as environment-specific configuration files, clustering for multiple cores, SSL certificate setup, database connections, logging transports, and caching and compression of content.</p>
+<p>The experience of building a production-ready, deployable web application involves making many choices: which technologies, what configuration settings, best practices, etc. While there is no one right set of choices, these are ones I have used in my own production web application and have found to be not only pragmatic and scalable, but a pleasure to work with. My hope is this might help you get off the ground fast so you can focus on building that awesome idea you&#39;ve got in your head.</p>
+<hr><h2><a href="#how-do-i-get-started" name="how-do-i-get-started" id="how-do-i-get-started">How do I get started?</a></h2>
+<p>Fork <strong>node-boot</strong> at <a href="https://github.com/cbumgard/node-boot">https://github.com/cbumgard/node-boot</a></p>
+<p>Make sure you have the latest stable versions of <strong>node.js</strong>, <strong>npm</strong>, and <strong>grunt</strong> installed. Then just:</p>
+<ol>
+<li><code>git clone https://github.com/cbumgard/node-boot</code></li>
+<li><code>cd node-boot/</code></li>
+<li><code>npm install</code></li>
+<li><code>grunt dev</code></li>
+<li><code>node app.js</code></li>
+</ol>
+<p>You should now be able to connect to <a href="http://localhost:8000/">http://localhost:8000/</a> and see a page just like this one.</p>
+<p>For an even more awesome workflow that detects file changes and restarts node automatically <strong>AND</strong> executes Grunt tasks to download packages and update client assets (depending on changed files) run the following commands in separate terminals:</p>
+<ol>
+<li><code>grunt watch</code></li>
+<li><code>nodemon app.js</code></li>
+</ol>
+<p><strong>NOTE:</strong> Make sure nodemon is installed first (e.g. <code>npm install -g nodemon</code>):</p>
+<p>And now build your awesome web app!</p>
+<hr><h2><a href="#how-can-i-get-help" name="how-can-i-get-help" id="how-can-i-get-help">How can I get help?</a></h2>
+<p>Check to see if someone has had a similar issue using <a href="https://github.com/cbumgard/node-boot/issues">Issues</a>.</p>
+<p>Feel free to <a href="https://github.com/cbumgard/node-boot/issues/new">submit a new issue</a> and/or a pull request if you&#39;ve resolved the issue.</p>
+<p>You can also write me a quick email at <a href="mailto:cbumgard@gmail.com">cbumgard@gmail.com</a>.</p>
+<hr><h2><a href="#license" name="license" id="license">License</a></h2>
+<p>The MIT License</p>
+<p>Copyright (c) 2012- Chris Bumgardner <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#x3a;&#99;&#98;&#117;&#x6d;&#x67;&#x61;&#114;&#x64;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#99;&#98;&#117;&#x6d;&#x67;&#x61;&#114;&#x64;&#x40;&#x67;&#x6d;&#x61;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+</div></div></div><script src="js/vendor/jquery.min.js"></script><script src="js/vendor/bootstrap.min.js"></script><script src="js/vendor/prettify.js"></script><script src="js/vendor/jquery.ba-hashchange.js"></script><script src="js/vendor/jquery.scrollTo.js"></script><script src="js/vendor/bootstrap-adjust-hash.js"></script><script src="js/main.js"></script></body>
